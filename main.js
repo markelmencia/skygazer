@@ -1,27 +1,34 @@
+var bounds = [
+    [40.3, -3.8],
+    [40.5, -3.6]
+];
+
 var map = L.map('map', {
     center: [40.4168, -3.7038],
-    zoom: 5,
-    zoomControl: false,       
+    zoom: 3,
+    zoomControl: false,
     attributionControl: false,
-    dragging: true,           
-    scrollWheelZoom: true,    
-    doubleClickZoom: false,   
-    boxZoom: false,           
-    keyboard: false           
+    dragging: true,
+    scrollWheelZoom: true,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    minZoom: 3,
+    maxBounds: bounds,
+    maxBoundsViscosity: 1.0
+});
+
+var greenIcon = L.icon({
+    iconUrl: 'data/sun.webp',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     subdomains: 'abcd',
     attribution: '&copy; CARTO'
 }).addTo(map);
-
-var lugares = [
-    { nombre: "Museo del Prado", lat: 40.4138, lng: -3.6921, info: "Arte clásico y moderno" },
-    { nombre: "Parque del Retiro", lat: 40.4153, lng: -3.6845, info: "Parque urbano con estanque" },
-    { nombre: "Puerta del Sol", lat: 40.4169, lng: -3.7038, info: "Centro de Madrid" }
-];
-
-lugares.forEach(function(lugar) {
-    var marker = L.marker([lugar.lat, lugar.lng]).addTo(map);
-    marker.bindPopup("<b>" + lugar.nombre + "</b><br>" + lugar.info);
-});
