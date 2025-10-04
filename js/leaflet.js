@@ -7,14 +7,14 @@ async function set_aurora_markers() {
         var marker = L.marker([location.lat, location.long], {icon: models.green_icon}).addTo(map);
 
             marker.bindPopup(`
-                <div id="aurora-popup">
+                <div id="popup-aurora">
                 <img src ="resources/img/aurora.webp" alt="Aurora Image" id="aurora-image">
                 <div id="auroraDescripcion">
                 <p>An aurora is a natural light display in Earth's sky. These lights emerge from harsh differences in the speed of solar wind when it makes contact with the Earth's magnetosphere, rendering beautiful light shows in the northern night sky. 
-                <p><b>${location.human_readable_name}</b> </p>
-                <p>KP: ${location.kp}</p>
-                <p>LAT: ${location.lat} </p>
-                <p>LON: ${location.long} </p>
+                <p><b>· ${location.human_readable_name}</b> </p>
+                <p>· KP: ${location.kp}</p>
+                <p>· LAT: ${location.lat} </p>
+                <p>· LON: ${location.long} </p>
                 </div>
                 </div>
                 `);
@@ -50,8 +50,15 @@ async function set_iss_marker() {
     let stringImage = "<div align= 'center'><img src='resources/img/issImage.jpg'/></div>";
     let position = await api.fetch_iss();
         var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.iss_icon}).addTo(map);
-    marker.bindPopup("<b>ISS</b><br>" + "International Space Station" + "<p>"+ stringHtml + "</p>" + stringImage);
-}
+    marker.bindPopup(`
+    <div id="popup-iss">
+        <b>ISS</b><br>
+        International Space Station
+        <p>${stringHtml}</p>
+        ${stringImage}
+    </div>
+    `);
+    }
 
 async function set_eclipse_marker() {
     
@@ -100,10 +107,14 @@ async function init() {
 
         const marker = L.marker([lat, lon], { icon: models.observatory_icon })
             .bindPopup(`
-                <b>${obs.name}</b><br>
-                Tipo: ${obs.type}<br>
-                Altitud: ${obs.altitude ?? 'Desconocida'} m<br>
-                Instrumentos: ${obs.instruments ?? 'N/A'}<br>
+                <div id="popup-observatory">
+                <p id="tituloOb"><b>${obs.name}</b></p><br>
+                <img src ="resources/img/observatory.jpg" alt="Observatory Image" id="observatory-image">
+                <p>An observatory is a location used for observing terrestrial, marine, or celestial events. A place where humans can see what the naked eyes can't.</p>
+                · Tipo: ${obs.type}<br>
+                · Altitud: ${obs.altitude ?? 'Desconocida'} m<br>
+                · Instrumentos: ${obs.instruments ?? 'N/A'}<br>
+                </div>
               `);
         markers.addLayer(marker);
     });

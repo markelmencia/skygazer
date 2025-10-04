@@ -12,7 +12,7 @@ html, body {
     filter: hue-rotate(1) saturate(12) brightness(0);
 }
 
-#aurora-popup {
+#popup-aurora{
 height:50%;
 }
 
@@ -26,4 +26,12 @@ height:50%;
 }
 #aurora-image p {
     text-align: center;
+}
+
+#observatory-image{
+    width:100%;
+}
+
+#tituloOb{
+    font-weight: bold;
 }
