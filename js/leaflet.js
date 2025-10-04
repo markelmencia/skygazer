@@ -15,10 +15,6 @@ async function set_iss_marker() {
     marker.bindPopup("<b>ISS</b><br>" + "International Space Station");
 }
 
-async function set_eclipse_marker() {
-    
-}
-
 var map = L.map('map', {
     center: [40.4168, -3.7038],
     zoom: 3,
@@ -38,5 +34,43 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
     attribution: '&copy; CARTO'
 }).addTo(map);
 
-set_aurora_markers()
-set_iss_marker()
+let observatories = []; // variable global para guardar los datos
+
+async function fetch_observatories() {
+  try {
+    const response = await fetch('resources/data/astronomical.json'); // tu ruta
+    observatories = await response.json();
+    console.log("Observatorios cargados:", observatories.length);
+  } catch (err) {
+    console.error("Error cargando observatorios:", err);
+  }
+}
+
+async function init() {
+  await fetch_observatories(); 
+
+  // Crear un grupo de clusters
+  const markers = L.markerClusterGroup();
+
+  observatories.forEach(obs => {
+    const lat = obs.geo_point_2d.lat;
+    const lon = obs.geo_point_2d.lon;
+
+    const marker = L.marker([lat, lon], { icon: models.observatory_icon })
+      .bindPopup(`
+        <b>${obs.name}</b><br>
+        Tipo: ${obs.type}<br>
+        Altitud: ${obs.altitude ?? 'Desconocida'} m<br>
+        Instrumentos: ${obs.instruments ?? 'N/A'}<br>
+        ${obs.description}
+      `);
+
+    markers.addLayer(marker);
+  });
+  map.addLayer(markers);
+}
+
+init();
+
+set_aurora_markers();
+set_iss_marker();
