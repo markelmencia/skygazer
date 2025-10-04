@@ -5,32 +5,37 @@
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+
 }
 
 main {
-
-    background-color: #0c1821;
     display: flex;
     justify-content: center;
 }
 
 body {
     background-color: #0c1821;
+    background-image: url("https://images.pexels.com/photos/3214110/pexels-photo-3214110.jpeg");
+    position: relative;
 }
+
+
 
 h1 {
     text-align: center;
     color: white;
     font-size: 72px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-top: -40px;
+    margin-bottom: 50px;
+    z-index: 2;
 }
 
 #header-gradient {
     height: 50px;
     color: white;
     background-color: #6f9ceb;
-    background: linear-gradient(180deg,rgba(111, 156, 235, 0.552) 0px, rgba(12, 24, 33, 1) 50px);
+    background: linear-gradient(180deg, rgba(138, 181, 255, 0.432) 0px, rgba(12, 24, 33, 0.137) 50px);
     margin: 0;
     margin-bottom: 40px;
 }
@@ -38,7 +43,7 @@ h1 {
 #map {
     width: 1300px;
     height: 750px;
-
     border-radius: 20px;
-    box-shadow: 10px 12px #6f9ceb;
+    
+    box-shadow: 0px 0px 40px 15px #6f9ceba9;
 }
