@@ -10,3 +10,15 @@ export async function fetch_auroras() {
 
     return locationsArray
 }
+
+export async function fetch_iss() {
+    try {
+        const res = await fetch('http://api.open-notify.org/iss-now.json')
+        const data = await res.json()
+        let position = data.iss_position
+        return position
+    } catch (err) {
+        console.error(err)
+        return null
+    }
+}

@@ -9,6 +9,12 @@ async function set_aurora_markers() {
     })
 }
 
+async function set_iss_marker() {
+    let position = await api.fetch_iss();
+    var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.green_icon}).addTo(map);
+    marker.bindPopup("<b>ISS</b><br>" + "International Space Station");
+}
+
 var bounds = [
     [40.3, -3.8],
     [40.5, -3.6]
@@ -35,3 +41,4 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 }).addTo(map);
 
 set_aurora_markers()
+set_iss_marker()
