@@ -13,5 +13,5 @@ def to_iso_date(s):
 lunares["Calendar Date"] = lunares["Calendar Date"].apply(to_iso_date)
 solares["Calendar Date"] = solares["Calendar Date"].apply(to_iso_date)
 
-lunares.to_json("data/lunar.json", orient="records", lines=True)
-solares.to_json("data/solar.json", orient="records", lines=True)
+lunares.to_json("data/lunar.json", orient="records")
+solares.to_json("data/solar.json", orient="records")
