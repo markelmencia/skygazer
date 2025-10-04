@@ -32,3 +32,22 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
     subdomains: 'abcd',
     attribution: '&copy; CARTO'
 }).addTo(map);
+
+async function fetch_auroras() {
+    let response = await fetch("https://aurora.hendrikpeter.net/api/aurora_data.json")
+    let data = await response.json()
+    let locationsObj = data.locations;
+    let locationsArray = Object.values(locationsObj);
+
+    return locationsArray
+}
+
+async function set_aurora_markers() {
+    let locations_array = await fetch_auroras();
+    locations_array.forEach(function(location) {
+        var marker = L.marker([location.lat, location.long], {icon: greenIcon}).addTo(map);
+        marker.bindPopup("<b>" + location.human_readable_name + "</b><br> KP: " + location.kp);
+    })
+}
+
+set_aurora_markers()
