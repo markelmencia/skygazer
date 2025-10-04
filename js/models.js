@@ -1,18 +1,18 @@
 export var green_icon = L.icon({
-    iconUrl: 'resources/img/sun.webp',
+    iconUrl: 'resources/img/cropped_circle_image.png',
 
-    iconSize:     [38, 95], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [30, 30], // size of the shadow
+    iconAnchor:   [30, 30], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [-15, -35] // point from which the popup should open relative to the iconAnchor
 });
 
 export var iss_icon = L.icon({
     iconUrl: 'resources/img/issIcon.png',
-    iconSize: [95, 95],
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconSize: [30, 30],
+    shadowSize:   [30, 30], // size of the shadow
+    iconAnchor:   [30, 30], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [-15, -35] // point from which the popup should open relative to the iconAnchor
 })

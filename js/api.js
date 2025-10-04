@@ -22,3 +22,15 @@ export async function fetch_iss() {
         return null
     }
 }
+
+export async function fetch_comets() {
+    try {
+        const res = await fetch('/api/comets');
+        const data = await res.json();
+        console.log('Comet data:', data);   
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch comets:', error);
+        return null;
+    }
+}

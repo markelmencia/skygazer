@@ -9,5 +9,5 @@ html, body {
 }
 
 #map img {
-    filter: hue-rotate(0) saturate(5) brightness(0.8);
+    filter: hue-rotate(1) saturate(12) brightness(0);
 }
