@@ -31,8 +31,7 @@ var map = L.map('map', {
     boxZoom: false,
     keyboard: false,
     minZoom: 3,
-    maxBounds: bounds,
-    maxBoundsViscosity: 1.0
+    worldCopyJump: true,
 });
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
