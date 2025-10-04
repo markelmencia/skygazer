@@ -11,7 +11,7 @@ async function set_aurora_markers() {
 
 async function set_iss_marker() {
     let position = await api.fetch_iss();
-    var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.green_icon}).addTo(map);
+        var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.iss_icon}).addTo(map);
     marker.bindPopup("<b>ISS</b><br>" + "International Space Station");
 }
 
