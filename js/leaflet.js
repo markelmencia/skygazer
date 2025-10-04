@@ -104,7 +104,6 @@ async function init() {
                 Tipo: ${obs.type}<br>
                 Altitud: ${obs.altitude ?? 'Desconocida'} m<br>
                 Instrumentos: ${obs.instruments ?? 'N/A'}<br>
-                ${obs.description}
               `);
         markers.addLayer(marker);
     });
