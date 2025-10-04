@@ -19,11 +19,6 @@ async function set_eclipse_marker() {
     
 }
 
-var bounds = [
-    [40.3, -3.8],
-    [40.5, -3.6]
-];
-
 var map = L.map('map', {
     center: [40.4168, -3.7038],
     zoom: 3,
