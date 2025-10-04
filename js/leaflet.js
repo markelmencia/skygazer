@@ -21,10 +21,36 @@ async function set_aurora_markers() {
         });
 }
 
+async function genListAstronauts() {
+    try {
+        const res = await fetch('https://corquaid.github.io/international-space-station-APIs/JSON/people-in-space.json');
+        const data = await res.json();
+
+        // Array con todos los astronautas
+        const astronauts = data.people;
+
+        // Crear la lista HTML
+        let listHTML = `<ul>`;
+        for (let i = 0; i < astronauts.length; i++) {
+            const a = astronauts[i];
+            listHTML += `<li><b>${a.name}</b> (${a.agency}) - ${a.position}</li>`;
+        }
+        listHTML += '</ul>';
+
+        return listHTML;
+
+    } catch (err) {
+        console.error(err);
+        return "<p>Error al cargar los astronautas.</p>";
+    }
+}
+
 async function set_iss_marker() {
+    let stringHtml = await genListAstronauts();
+    let stringImage = "<div align= 'center'><img src='resources/img/issImage.jpg'/></div>";
     let position = await api.fetch_iss();
         var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.iss_icon}).addTo(map);
-    marker.bindPopup("<b>ISS</b><br>" + "International Space Station");
+    marker.bindPopup("<b>ISS</b><br>" + "International Space Station" + "<p>"+ stringHtml + "</p>" + stringImage);
 }
 
 async function set_eclipse_marker() {
