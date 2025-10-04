@@ -11,3 +11,18 @@ html, body {
 #map img {
     filter: hue-rotate(1) saturate(12) brightness(0);
 }
+
+#aurora-popup {
+height:50%;
+}
+#aurora-image {
+    width: 80%;
+    border-radius:5px;
+    display:block;
+    margin: 0 auto;
+    height: auto;
+    margin-top: 5px;
+}
+#aurora-image p {
+    text-align: center;
+}
