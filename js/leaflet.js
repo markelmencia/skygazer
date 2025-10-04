@@ -10,8 +10,7 @@ async function set_aurora_markers() {
                 <div id="aurora-popup">
                 <img src ="resources/img/aurora.webp" alt="Aurora Image" id="aurora-image">
                 <div id="auroraDescripcion">
-                <p>An aurora is a natural light display in Earth's sky, predominantly observed in high-latitude regions around the Arctic and Antarctic. </p>
-                <p>Auroras are the result of disturbances in the Earth's magnetosphere caused by enhanced speeds of solar wind from coronal holes and coronal mass ejections. These disturbances alter the trajectories of charged particles in the magnetospheric plasma.
+                <p>An aurora is a natural light display in Earth's sky. These lights emerge from harsh differences in the speed of solar wind when it makes contact with the Earth's magnetosphere, rendering beautiful light shows in the northern night sky. 
                 <p><b>${location.human_readable_name}</b> </p>
                 <p>KP: ${location.kp}</p>
                 <p>LAT: ${location.lat} </p>
@@ -51,5 +50,41 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
     attribution: '&copy; CARTO'
 }).addTo(map);
 
-set_aurora_markers()
-set_iss_marker()
+let observatories = []; // variable global para guardar los datos
+
+
+async function fetch_observatories() {
+    try {
+        const response = await fetch('resources/data/astronomical.json'); // tu ruta
+        observatories = await response.json();
+        console.log("Observatorios cargados:", observatories.length);
+    } catch (err) {
+        console.error("Error cargando observatorios:", err);
+    }
+}
+
+async function init() {
+    await fetch_observatories(); 
+
+    // Crear un grupo de clusters
+    const markers = L.markerClusterGroup();
+    observatories.forEach(obs => {
+        const lat = obs.geo_point_2d.lat;
+        const lon = obs.geo_point_2d.lon;
+
+        const marker = L.marker([lat, lon], { icon: models.observatory_icon })
+            .bindPopup(`
+                <b>${obs.name}</b><br>
+                Tipo: ${obs.type}<br>
+                Altitud: ${obs.altitude ?? 'Desconocida'} m<br>
+                Instrumentos: ${obs.instruments ?? 'N/A'}<br>
+                ${obs.description}
+              `);
+        markers.addLayer(marker);
+    });
+    map.addLayer(markers);
+}
+
+init();
+set_aurora_markers();
+set_iss_marker();
