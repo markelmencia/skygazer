@@ -1,0 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+#map img {
+    filter: hue-rotate(0) saturate(5) brightness(0.8);
+}
