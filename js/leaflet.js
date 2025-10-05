@@ -93,7 +93,7 @@ let observatories = []; // variable global para guardar los datos
 
 async function fetch_observatories() {
     try {
-        const response = await fetch('resources/data/astronomical2.json'); // tu ruta
+        const response = await fetch('resources/data/observatories.json'); // tu ruta
         observatories = await response.json();
         console.log("Observatorios cargados:", observatories.length);
     } catch (err) {
