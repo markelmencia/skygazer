@@ -1,10 +1,25 @@
 import * as api from "./api.js"
 import * as models from "./models.js"
 
+// Grupos de capas para controlar la visibilidad
+let auroraGroup = L.layerGroup();
+let issGroup = L.layerGroup();
+let observatoryGroup = L.markerClusterGroup();
+let meteorGroup = L.markerClusterGroup({
+    iconCreateFunction: function(cluster) {
+        return L.divIcon({
+            html: `<div><span>${cluster.getChildCount()}</span></div>`,
+            className: 'meteor-cluster', 
+            iconSize: L.point(40, 40)
+        });
+    }
+});
+
 async function set_aurora_markers() {
     let locations_array = await api.fetch_auroras();
     locations_array.forEach(function(location) {
-        var marker = L.marker([location.lat, location.long], {icon: models.green_icon}).addTo(map);
+        var marker = L.marker([location.lat, location.long], {icon: models.green_icon});
+        auroraGroup.addLayer(marker);
 
             marker.bindPopup(`
                 <div id="popup-aurora">
@@ -49,7 +64,8 @@ async function set_iss_marker() {
     let stringHtml = await genListAstronauts();
     let stringImage = "<div align= 'center'><img src='resources/img/issImage.jpg'/></div>";
     let position = await api.fetch_iss();
-        var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.iss_icon}).addTo(map);
+        var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.iss_icon});
+        issGroup.addLayer(marker);
     marker.bindPopup("<b>ISS</b><br>" + "International Space Station" + "<p><br>The Internation Space Station (ISS for short) is a station in orbit made possible by international effort, in which astronauts from all around the world commute for research purposes. Here's a list of the current ISS members on board: <br>"+ stringHtml + "</p>" + stringImage);
     }
 
@@ -88,8 +104,7 @@ async function fetch_observatories() {
 async function init() {
     await fetch_observatories(); 
 
-    // Crear un grupo de clusters
-    const markers = L.markerClusterGroup();
+    // Crear markers de observatorios
     observatories.forEach(obs => {
         const lat = obs.geo_point_2d.lat;
         const lon = obs.geo_point_2d.lon;
@@ -105,9 +120,8 @@ async function init() {
                 · Instruments: ${obs.instruments ?? 'N/A'}<br>
                 </div>
               `);
-        markers.addLayer(marker);
+        observatoryGroup.addLayer(marker);
     });
-    map.addLayer(markers);
 }
 
 let meteors = []
@@ -124,15 +138,7 @@ async function fetch_meteors() {
 async function init_meteors() {
     await fetch_meteors(); 
 
-    // Crear un grupo de clusters
-    const markers = L.markerClusterGroup({
-        iconCreateFunction: function(cluster) {
-            return L.divIcon({
-                html: `<div><span>${cluster.getChildCount()}</span></div>`,
-                className: 'meteor-cluster', 
-                iconSize: L.point(40, 40)
-            });
-        }});
+    // Crear markers de meteoros
     meteors.forEach(meteor => {
         const lat = meteor.lat;
         const lon = meteor.lon;
@@ -142,17 +148,74 @@ async function init_meteors() {
                 <div id="popup-meteor">
                 <p><b>${meteor.name}</b></p><br>
                 <img src ="resources/img/meteor.jpg" alt="Meteor Image" id="meteor-image">
-                <p>Place marked by storical meteorite landing record, when a meteoroid survives a trip through the atmosphere and hits the ground, it’s called a meteorite.</p>
+                <p>Place marked by storical meteorite landing record, when a meteoroid survives a trip through the atmosphere and hits the ground, it's called a meteorite.</p>
                 · Mass: ${meteor.mass}gr<br>
                 · Year: ${meteor.year ?? 'Desconocida'}<br>
                 </div>
               `);
-        markers.addLayer(marker);
+        meteorGroup.addLayer(marker);
     });
-    map.addLayer(markers);
 }
 
-init();
-init_meteors();
-set_aurora_markers();
-set_iss_marker();
+// Función para configurar los event listeners de los checkboxes
+function setupCheckboxListeners() {
+    // ISS checkbox
+    const issCheckbox = document.getElementById('iss-checkbox');
+    issCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            map.addLayer(issGroup);
+        } else {
+            map.removeLayer(issGroup);
+        }
+    });
+    
+    // Aurora checkbox
+    const auroraCheckbox = document.getElementById('aurora-checkbox');
+    auroraCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            map.addLayer(auroraGroup);
+        } else {
+            map.removeLayer(auroraGroup);
+        }
+    });
+    
+    // Observatory checkbox
+    const observatoryCheckbox = document.getElementById('observatory-checkbox');
+    observatoryCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            map.addLayer(observatoryGroup);
+        } else {
+            map.removeLayer(observatoryGroup);
+        }
+    });
+    
+    // Meteor checkbox
+    const meteorCheckbox = document.getElementById('meteor-checkbox');
+    meteorCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            map.addLayer(meteorGroup);
+        } else {
+            map.removeLayer(meteorGroup);
+        }
+    });
+}
+
+// Función para inicializar todo
+async function initializeMap() {
+    await init();
+    await init_meteors();
+    await set_aurora_markers();
+    await set_iss_marker();
+    
+    // Agregar todos los grupos al mapa inicialmente (ya que los checkboxes están marcados por defecto)
+    map.addLayer(issGroup);
+    map.addLayer(auroraGroup);
+    map.addLayer(observatoryGroup);
+    map.addLayer(meteorGroup);
+    
+    // Configurar los event listeners
+    setupCheckboxListeners();
+}
+
+// Llamar a la función de inicialización cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', initializeMap);
