@@ -1,0 +1,18 @@
+[
+  { "name": "Österplana", "mass": 33, "year": 2012, "lat": 58.58333, "lon": 13.43333 },
+  { "name": "Rosamond", "mass": 11.1, "year": 2012, "lat": 34.82793, "lon": -118.1464 },
+  { "name": "Stewart Valley", "mass": 130, "year": 2012, "lat": 36.235, "lon": -116.18358 },
+  { "name": "Tupelo", "mass": 280, "year": 2012, "lat": 34.24216, "lon": -88.77594 },
+  { "name": "Chelyabinsk", "mass": 100000, "year": 2013, "lat": 54.81667, "lon": 61.11667 },
+  { "name": "Flandreau", "mass": 21360, "year": 1983, "lat": 44.04833, "lon": -96.59167 },
+  { "name": "Gaylord", "mass": 8480, "year": 1983, "lat": 39.61667, "lon": -98.7 },
+  { "name": "Grayton", "mass": 11300, "year": 1983, "lat": 30.31167, "lon": -86.16667 },
+  { "name": "Great Bend", "mass": 28770, "year": 1983, "lat": 38.395, "lon": -98.91583 },
+  { "name": "Zaragoza", "mass": 162000, "year": 1950, "lat": 41.65, "lon": -0.86667 },
+  { "name": "Mantos Blancos", "mass": 10300, "year": 1876, "lat": -23.45, "lon": -70.11667 },
+  { "name": "Nochtuisk", "mass": 1876, "year": 112, "lat": 59.98333, "lon": 117.58333 },
+  { "name": "Verkhne Dnieprovsk", "mass": 24164, "year": 1876, "lat": 48.63333, "lon": 34.36667 },
+  { "name": "Bhagur", "mass": 18, "year": 1877, "lat": 20.88333, "lon": 74.83333 },
+  { "name": "Cronstad", "mass": 3650, "year": 1877, "lat": -27.7, "lon": 27.3 },
+  { "name": "Cynthiana", "mass": 6000, "year": 1877, "lat": 38.4, "lon": -84.25 }
+]

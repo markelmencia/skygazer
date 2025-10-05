@@ -50,19 +50,8 @@ async function set_iss_marker() {
     let stringImage = "<div align= 'center'><img src='resources/img/issImage.jpg'/></div>";
     let position = await api.fetch_iss();
         var marker = L.marker([parseFloat(position.latitude), parseFloat(position.longitude)], {icon: models.iss_icon}).addTo(map);
-    marker.bindPopup(`
-    <div id="popup-iss">
-        <b>ISS</b><br>
-        International Space Station
-        <p>${stringHtml}</p>
-        ${stringImage}
-    </div>
-    `);
+    marker.bindPopup("<b>ISS</b><br>" + "International Space Station" + "<p><br>The Internation Space Station (ISS for short) is a station in orbit made possible by international effort, in which astronauts from all around the world commute for research purposes. Here's a list of the current ISS members on board: <br>"+ stringHtml + "</p>" + stringImage);
     }
-
-async function set_eclipse_marker() {
-    
-}
 
 var map = L.map('map', {
     center: [40.4168, -3.7038],
@@ -121,6 +110,30 @@ async function init() {
     map.addLayer(markers);
 }
 
+let meteors = []
+async function fetch_meteors() {
+    try {
+        const response = await fetch('resources/data/meteors.json'); // tu ruta
+        meteors = await response.json();
+        console.log(meteors)
+    } catch (err) {
+        console.error("Error cargando observatorios:", err);
+    }
+}
+
+async function init_meteors() {
+    await fetch_meteors()
+     meteors.forEach(meteor => {
+        const marker = L.marker([meteor.lat, meteor.lon], { icon: models.meteor_icon})
+            .bindPopup(`
+                
+        `);
+
+        marker.addTo(map)
+     })
+}
+
 init();
+init_meteors();
 set_aurora_markers();
 set_iss_marker();

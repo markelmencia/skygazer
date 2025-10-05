@@ -1,0 +1,215 @@
+{
+  "last_update_at": "2025-10-04 22:59:01.544680Z",
+  "locations": {
+    "andenes": {
+      "average_deviation": -52.1,
+      "average_total": 53849.5,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Andenes (NO)",
+      "kp": 2,
+      "lat": 69.2953,
+      "long": 16.0381,
+      "quiet_mean_tot": 53797.39
+    },
+    "beerenberg": {
+      "average_deviation": -61.1,
+      "average_total": 53793.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Beerenberg (NO)",
+      "kp": 3,
+      "lat": 70.9,
+      "long": -8.7,
+      "quiet_mean_tot": 53731.93
+    },
+    "hankasalmi_fi": {
+      "average_deviation": -10.5,
+      "average_total": 15815.3,
+      "data_source": "https://space.fmi.fi/",
+      "human_readable_name": "Hankasalmi (FI)",
+      "kp": 0,
+      "lat": 62.3925,
+      "long": 26.438,
+      "quiet_mean_tot": 15825.8
+    },
+    "ivalo_fi": {
+      "average_deviation": -131.2,
+      "average_total": 13255.4,
+      "data_source": "https://space.fmi.fi/",
+      "human_readable_name": "Ivalo (FI)",
+      "kp": 4,
+      "lat": 68.6616,
+      "long": 27.5371,
+      "quiet_mean_tot": 13386.6
+    },
+    "jackvik_se": {
+      "average_deviation": 66.2,
+      "average_total": 53275.8,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Jackvick (SV)",
+      "kp": 3,
+      "lat": 66.4,
+      "long": 16.98,
+      "quiet_mean_tot": 53341.96
+    },
+    "karmoy": {
+      "average_deviation": 33.1,
+      "average_total": 50793.4,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Karmoy (NO)",
+      "kp": 2,
+      "lat": 59.21,
+      "long": 5.24,
+      "quiet_mean_tot": 50826.52
+    },
+    "nordkap": {
+      "average_deviation": -92.5,
+      "average_total": 54576.4,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Nordkap (NO)",
+      "kp": 3,
+      "lat": 71.0917,
+      "long": 25.7856,
+      "quiet_mean_tot": 54483.9
+    },
+    "rorvik": {
+      "average_deviation": 58.3,
+      "average_total": 52531.6,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Rørvik (NO)",
+      "kp": 2,
+      "lat": 64.9469,
+      "long": 10.9872,
+      "quiet_mean_tot": 52589.95
+    },
+    "soroya": {
+      "average_deviation": -76.0,
+      "average_total": 53870.6,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Sørøya (NO)",
+      "kp": 3,
+      "lat": 70.5414,
+      "long": 22.2247,
+      "quiet_mean_tot": 53794.64
+    },
+    "tartu_ee": {
+      "average_deviation": -0.6,
+      "average_total": 18390.9,
+      "data_source": "https://space.fmi.fi/",
+      "human_readable_name": "Tartu (EE)",
+      "kp": 0,
+      "lat": 58.4274,
+      "long": 26.7277,
+      "quiet_mean_tot": 18391.5
+    },
+    "tromso": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Tromsø (NO)",
+      "kp": 2,
+      "lat": 69.6617,
+      "long": 18.94,
+      "quiet_mean_tot": 53944.08
+    },
+    "severodvnisk": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Severodvnisk",
+      "kp": 2,
+      "lat": 64.567, 
+      "long": 39.867,
+      "quiet_mean_tot": 53944.08
+    },
+    "naryanmar": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Naryanmar",
+      "kp": 2,
+      "lat": 67.633, 
+      "long": 53.050,
+      "quiet_mean_tot": 53944.08
+    },
+    "vorkuta": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Vorkuta",
+      "kp": 2,
+      "lat": 67.500, 
+      "long": 64.033,
+      "quiet_mean_tot": 53944.08
+    },
+    "komi": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Komi",
+      "kp": 2,
+      "lat": 64.283, 
+      "long": 54.467,
+      "quiet_mean_tot": 53944.08
+    },
+    "sakha": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Sakha",
+      "kp": 2,
+      "lat": 66.400, 
+      "long": 129.167,
+      "quiet_mean_tot": 53944.08
+    },
+    "chukotka": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Chukotka",
+      "kp": 2,
+      "lat": 66.667, 
+      "long": 171.000,
+      "quiet_mean_tot": 53944.08
+    },
+    "norilsk": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Norilsk",
+      "kp": 2,
+      "lat": 69.333, 
+      "long": 88.217,
+      "quiet_mean_tot": 53944.08
+    },
+    "húsavik": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Húsavik",
+      "kp": 2,
+      "lat": 66.050, 
+      "long": -17.317,
+      "quiet_mean_tot": 53944.08
+    },
+    "nuuk": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Nuuk",
+      "kp": 2,
+      "lat": 64.175029, 
+      "long": -51.7355386,
+      "quiet_mean_tot": 53944.08
+    },
+    "yanik-lake": {
+      "average_deviation": -57.9,
+      "average_total": 54002.0,
+      "data_source": "https://geo.phys.uit.no/",
+      "human_readable_name": "Yanik Lake",
+      "kp": 2,
+      "lat": 65.365544, 
+      "long": -118.629845,
+      "quiet_mean_tot": 53944.08
+    }
+  }
+}
