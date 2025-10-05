@@ -31,6 +31,9 @@ height:50%;
 #observatory-image{
     width:100%;
 }
+#meteor-image{
+    width: 100%;
+}
 
 #tituloOb{
     font-weight: bold;
@@ -49,3 +52,16 @@ height:50%;
     opacity: 0.2;
   }
 }
+
+.meteor-cluster {
+    background-color: rgba(255, 165, 0, 0.7); 
+    border: 2px solid #ff9900;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+}
+

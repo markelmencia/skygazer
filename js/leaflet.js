@@ -100,9 +100,9 @@ async function init() {
                 <p id="tituloOb"><b>${obs.name}</b></p><br>
                 <img src ="resources/img/observatory.jpg" alt="Observatory Image" id="observatory-image">
                 <p>An observatory is a location used for observing terrestrial, marine, or celestial events. A place where humans can see what the naked eyes can't.</p>
-                · Tipo: ${obs.type}<br>
-                · Altitud: ${obs.altitude ?? 'Desconocida'} m<br>
-                · Instrumentos: ${obs.instruments ?? 'N/A'}<br>
+                · Type: ${obs.type}<br>
+                · Altitude: ${obs.altitude ?? 'Desconocida'} m<br>
+                · Instruments: ${obs.instruments ?? 'N/A'}<br>
                 </div>
               `);
         markers.addLayer(marker);
@@ -122,15 +122,34 @@ async function fetch_meteors() {
 }
 
 async function init_meteors() {
-    await fetch_meteors()
-     meteors.forEach(meteor => {
-        const marker = L.marker([meteor.lat, meteor.lon], { icon: models.meteor_icon})
-            .bindPopup(`
-                
-        `);
+    await fetch_meteors(); 
 
-        marker.addTo(map)
-     })
+    // Crear un grupo de clusters
+    const markers = L.markerClusterGroup({
+        iconCreateFunction: function(cluster) {
+            return L.divIcon({
+                html: `<div><span>${cluster.getChildCount()}</span></div>`,
+                className: 'meteor-cluster', 
+                iconSize: L.point(40, 40)
+            });
+        }});
+    meteors.forEach(meteor => {
+        const lat = meteor.lat;
+        const lon = meteor.lon;
+
+        const marker = L.marker([lat, lon], { icon: models.meteor_icon })
+            .bindPopup(`
+                <div id="popup-meteor">
+                <p><b>${meteor.name}</b></p><br>
+                <img src ="resources/img/meteor.jpg" alt="Meteor Image" id="meteor-image">
+                <p>Place marked by storical meteorite landing record, when a meteoroid survives a trip through the atmosphere and hits the ground, it’s called a meteorite.</p>
+                · Mass: ${meteor.mass}gr<br>
+                · Year: ${meteor.year ?? 'Desconocida'}<br>
+                </div>
+              `);
+        markers.addLayer(marker);
+    });
+    map.addLayer(markers);
 }
 
 init();

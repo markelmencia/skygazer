@@ -26,9 +26,10 @@ h1 {
     color: white;
     font-size: 72px;
     font-weight: 700;
-    margin-top: -40px;
+    margin-top: -20px;
     margin-bottom: 50px;
     z-index: 2;
+    font-family: "Goldman", sans-serif;
 }
 
 #header-gradient {
