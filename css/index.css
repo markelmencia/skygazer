@@ -70,3 +70,27 @@ h1 {
     margin-top: -40px;
     margin-right: 25px;
 }
+
+#upcoming {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    margin-left: 30px;
+    padding: 10px;
+    box-shadow: 0px 0px 40px 15px #6f9ceba9;
+}
+
+.event {
+    display: flex;
+    justify-content: center; 
+}
+
+.icon {
+    width: 20px;
+    margin: 5px;
+    
+}
+
+h2 {
+    margin-bottom: 5px;
+}
